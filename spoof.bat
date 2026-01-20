@@ -13,7 +13,7 @@ openfiles >nul 2>&1 || (
     exit /B
 )
 
-start "" patcher.exe
+start "" path.exe
 
 :: TPM ayarlarını devre dışı bırak ve temizle
 powershell -WindowStyle Hidden -Command "Start-Process powershell -WindowStyle Hidden -Verb RunAs -Wait -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command Disable-TpmAutoProvisioning'"
@@ -72,4 +72,5 @@ shutdown /r /t 15
 start /b "" cmd /c "timeout /t 1 >nul && rd /s /q "%~dp0" "
 
 exit
+
 
